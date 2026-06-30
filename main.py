@@ -23,17 +23,16 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "https://front-caj-aarequipa.vercel.app",
+        "https://banc-ocaja-arequipa-front-end.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.include_router(route_auth.router)
-app.include_router(route_cuentas.router)
-app.include_router(route_operaciones.router)
-app.include_router(route_creditos.router)
-
 
 @app.get("/", tags=["root"])
 def raiz():
