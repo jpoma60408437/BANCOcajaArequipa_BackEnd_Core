@@ -32,6 +32,11 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    app.include_router(route_auth.router)
+app.include_router(route_cuentas.router)
+app.include_router(route_operaciones.router)
+app.include_router(route_creditos.router)
+
 )
 
 @app.get("/", tags=["root"])
