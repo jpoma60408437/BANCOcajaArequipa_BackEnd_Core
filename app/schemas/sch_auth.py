@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 
 
 class LoginRequest(BaseModel):
-    username: str = Field(..., examples=["cli000002"])
+    numerodni: str = Field(..., examples=["11111111"])
     password: str = Field(..., examples=["demo1234"])
 
 
