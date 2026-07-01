@@ -20,24 +20,18 @@ app = FastAPI(
     ),
     version="1.0.0",
 )
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "https://front-caj-aarequipa.vercel.app",
-        "https://banc-ocaja-arequipa-front-end.vercel.app",
-    ],
+    allow_origins=[...],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
 app.include_router(route_auth.router)
 app.include_router(route_cuentas.router)
 app.include_router(route_operaciones.router)
-app.include_router(route_creditos.router)
-
-)
+app.include_router(route_creditos.router)  # ⚠️ este paréntesis debería cerrar add_middleware(), pero quedó después de los routers
 
 @app.get("/", tags=["root"])
 def raiz():
